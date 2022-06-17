@@ -66,6 +66,16 @@ final class QrCode
     {
         return $this->getQrCodeResult()->getDataUri();
     }
+    
+    /** @param "svg"|"png"|null $format */
+    public function getImageAsString(?string $format = null): string
+    {
+        if ($format !== null) {
+            $this->setWriterByExtension($format);
+        }
+        
+        return $this->getQrCodeResult()->getString();
+    }
 
     public function getText(): string
     {
